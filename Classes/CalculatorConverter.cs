@@ -25,6 +25,7 @@ namespace calculator.Classes
                 '5' => true,
                 '6' => true,
                 '7' => true,
+                '8' => true,
                 '9' => true,
                 '0' => true,
                 '.' => true,
@@ -116,6 +117,7 @@ namespace calculator.Classes
                         else
                         {
                             stack.Pop();
+                            break;
                         }
                     }
                 }
@@ -133,9 +135,9 @@ namespace calculator.Classes
                         foreach (char element in tempArr)
                         {
                             if (element == '(')
-                            {
+                            {   
                                 break;
-                            }
+                            } else 
                             if (precedence(element) >= precedence(character))
                             {
 

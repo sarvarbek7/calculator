@@ -17,12 +17,6 @@ internal class Program
         CalculatorLogic logic = new CalculatorLogic(postfixArr);
         double result = logic.Result();
         
-        Console.Write($"{infixExpression} = ");
-        foreach (string str in postfixArr) 
-        {
-            Console.Write(str);
-        }
-        Console.Write($" = {result}");
-        Console.WriteLine();
+        Console.WriteLine($"{infixExpression} = {result}");
     }
 }
