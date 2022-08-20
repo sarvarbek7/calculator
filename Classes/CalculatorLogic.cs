@@ -24,8 +24,9 @@ namespace calculator.Classes
         public double Result() {
             Stack<double> stack= new Stack<double>();
             for (int index=0; index < postfixArr.Length; index++) 
-            {   
+            {
                 string element = postfixArr[index]; 
+                System.Console.WriteLine($"{element} =>");
                 element = element.Replace( ',' , '.' );
 
                 if ( !isOperator(element) )
