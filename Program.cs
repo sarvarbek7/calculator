@@ -6,17 +6,34 @@ internal class Program
     private static void Main(string[] args)
     {
         string infixExpression;
-        Console.WriteLine("Enter your expression");
 
-        infixExpression = Console.ReadLine()!;  
+        do
+        {
+            Console.WriteLine("Enter your expression");
 
-        CalculatorConverter converter = new CalculatorConverter(infixExpression);
-        converter.InfixToPostfix();
-        string[] postfixArr = converter.PostfixExpressionAsArray();
+            infixExpression = Console.ReadLine()!;
 
-        CalculatorLogic logic = new CalculatorLogic(postfixArr);
-        double result = logic.Result();
-        
-        Console.WriteLine($"{infixExpression} = {result}");
+            CalculatorConverter converter = new CalculatorConverter(infixExpression);
+
+            try
+            {
+                converter.InfixToPostfix();
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Given expression is invalid.");
+
+                return;
+            }
+            string[] postfixArr = converter.PostfixExpressionAsArray();
+
+            CalculatorLogic logic = new CalculatorLogic(postfixArr);
+            double result = logic.Result();
+
+            Console.WriteLine($"{infixExpression} = {result}");
+
+            Console.WriteLine("Press Q to exit.");
+        }
+        while (Console.ReadKey().KeyChar != 'q');
     }
 }

@@ -87,13 +87,13 @@ namespace calculator.Classes
                         }
                         else
                         {
-                            postfixArr = postfixArr.Append(mystr).ToArray();
+                            postfixArr = [.. postfixArr, mystr];
                             mystr = "";
                         }
                     }
                     else
                     {
-                        postfixArr = postfixArr.Append(mystr).ToArray();
+                        postfixArr = [.. postfixArr, mystr];
                         mystr = "";
                         
                     }
@@ -112,7 +112,7 @@ namespace calculator.Classes
                     {
                         if (element != '(')
                         {
-                            postfixArr = postfixArr.Append(stack.Pop().ToString()).ToArray();
+                            postfixArr = [.. postfixArr, stack.Pop().ToString()];
                         }
                         else
                         {
@@ -152,6 +152,9 @@ namespace calculator.Classes
                 if (isBlank(character))
                 {
                     continue;
+                }
+                else{
+                    throw new ArgumentException("Given expression is invalid", nameof(infixExpression));
                 }
 
                 // Before finish add stack elements to postfixArr 
